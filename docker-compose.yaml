@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  postgresql:
+    image: docker.io/postgres:14
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgresql_data:/var/lib/postgresql/data'
+    environment:
+      - 'POSTGRES_PASSWORD=${POSTGRES_PASSWORD}'
+      - 'POSTGRES_DB=${POSTGRES_DB}'
+      - 'POSTGRES_USER=${POSTGRES_USER}'
+
+  redis:
+    image: docker.io/redis:6.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
+    volumes:
+      - 'redis_data:/data'
+
+
+volumes:
+  redis_data:
+    driver: local
+  postgresql_data:
+    driver: local
