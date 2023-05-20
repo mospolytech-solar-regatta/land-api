@@ -1,0 +1,8 @@
+.idea
+__pycache__
+.env
+celerybeat-schedule*
+background/config/local*
+solar-tester
+!/.idea/runConfigurations
+venv
